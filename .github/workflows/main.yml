@@ -1,0 +1,29 @@
+name: Ejecutar Script de Python
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Descarga el código de tu repositorio en el servidor de GitHub
+      - name: Obtener código del repositorio
+        uses: actions/checkout@v4
+
+      # 2. Instala y configura Python
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 3. Instala librerías (opcional: descomenta si usas requirements.txt)
+      # - name: Instalar dependencias
+      #   run: pip install -r requirements.txt
+
+      # 4. Ejecuta tu archivo de Python
+      - name: Correr script
+        run: python main.py
